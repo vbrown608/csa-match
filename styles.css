@@ -1,0 +1,22 @@
+html { height: 100% }
+
+body { height: 100%; margin: 0; padding: 0 }
+
+footer { width: 100% }
+
+#wrapper {
+	width: 600px;
+	margin: auto;
+}
+
+#map-canvas { 
+	float: left;
+	height: 300px; 
+	width: 300px;
+}
+
+#site-list {
+	float: left;
+	height: 300px; 
+	width: 300px;
+}
