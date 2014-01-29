@@ -12,7 +12,7 @@ class Site(db.Model):
 	"""
 	Represent a CSA pick-up location
 	"""
-	title = db.StringProperty()
+	name = db.StringProperty()
 	lat = db.FloatProperty()
 	lng = db.FloatProperty()
 	desc_short = db.StringProperty()
