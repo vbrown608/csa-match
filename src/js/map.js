@@ -50,14 +50,13 @@ $(document).ready(function() {
 		return false;
 	}
 
-	//$('input').click(function(){
-		$.ajax({
-			url: '/nearestSites',
-			success: function(result){
-	    		alert(result);
-	  		}
-		});
-	//});
+	$.ajax({
+		url: '/nearestSites',
+		success: function(result){
+    		alert(result);
+  		}
+	});
+
 });
 
 
