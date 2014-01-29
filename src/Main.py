@@ -13,7 +13,16 @@ class Site(db.Model):
     title = db.StringProperty()
     lat = db.FloatProperty()
     lng = db.FloatProperty()
-    description = db.StringProperty()
+    desc_short = db.StringProperty()
+    desc_long = db.StringProperty()
+
+class FindSites(webapp.RequestHandler):
+	def get(self):
+		nearestSites = {
+			"foo" : "bar"
+		}
+		self.response.headers = {'Content-Type': 'application/json; charset=utf-8'}
+		self.response.out.write(json.dumps(nearestSites))
 
 class MainPage(webapp.RequestHandler):
     """
@@ -24,8 +33,9 @@ class MainPage(webapp.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'index.html')
         self.response.out.write(template.render(path, template_values))
 
-application = webapp.WSGIApplication([
-    ('/', MainPage)], debug=True)
+application = webapp.WSGIApplication(
+	[('/', MainPage),
+	('/nearestSites', FindSites)], debug=True)
 
 def main():
     run_wsgi_app(application)
