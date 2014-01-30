@@ -3,14 +3,10 @@ $(document).ready(function() {
 
 	function initialize() {
 		var mapOptions = {
-			center: new google.maps.LatLng(37.75, -122.28),
-			zoom: 9
+			center: new google.maps.LatLng(37.85, -122.25),
+			zoom: 10
 		};
 		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-		/*var sites = [{ name: 'First Farm', lat: 37.75, lng: -122.28, info: '1', details: 'Even more information'},
-		{name: 'Second Spot', lat: 37.8, lng: -122, info: '2', details: 'Like, a lot more'},
-		{name: 'Third Thhh', lat: 37.75, lng: -121.95, info: '3', details: 'So much information!!!'}];*/
 		
 		var infowindow = new google.maps.InfoWindow();
 		var marker;
@@ -23,16 +19,19 @@ $(document).ready(function() {
 				marker = new google.maps.Marker({
 					position: latLng,
 					map: map,
-					title: data.name //TODO: TItle not displaying - I think this word already means something.
+					title: data.csa.name
 				});
 				
 				// Adding infowindows
 				google.maps.event.addListener(marker, 'click', (function(marker) {
 					return function() {
-						infowindow.setContent(data.desc_short);
+						infowindow.setContent(data.desc);
 						infowindow.open(map, marker);
 					}
 				})(marker));
+
+				// Add site to list in sidebar
+				// $('ul#site-list').prepend('<li>' + data.name + '</li>');
 			});
 		});
 	}
@@ -52,6 +51,10 @@ $(document).ready(function() {
 		});
 		return false;
 	}
+
+	$('header').click( function() {
+		searchLocations();
+	});
 
 });
 

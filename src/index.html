@@ -25,11 +25,11 @@
 
 <div id='map-canvas'></div>
 
-<div id='site-list'>
-	<ul>
-		<li>The first one.</li>
-		<li>The second one.</li>
-		<li>The third one.</li>
+<div id='right-bar'>
+	<ul id='site-list'>
+	{% for site in site_list %}
+		<li><strong>{{ site.csa.name }}</strong> at {{ site.address }}</a></li>
+	{% endfor %}
 	</ul>
 </div>
 
