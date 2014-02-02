@@ -12,6 +12,7 @@ $(document).ready(function() {
 		var marker;
 		
 		$.get('/nearestSites', function(result) {
+			alert(result);
 			$.each(result, function(key, data) {
 				var latLng = new google.maps.LatLng(data.lat, data.lng); 
 				
