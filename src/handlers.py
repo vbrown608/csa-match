@@ -15,7 +15,6 @@ from google.appengine.api import users
 from google.appengine.ext.deferred import defer
 from google.appengine.ext import ndb
 from google.appengine.ext import db	
-# from google.appengine.ext import webapp
 
 def toDictionary(model):
 	output = {}
@@ -37,16 +36,13 @@ def toDictionary(model):
 			output[key] = toDictionary(value)
 		else:
 			raise ValueError('cannot encode ' + repr(prop))
-
 	return output
 
 class FindSites(BaseHandler):
 	def get(self):
 		nearestSites = db.GqlQuery("SELECT * FROM Site").fetch(30)
-		info = map(lambda x: toDictionary(x), nearestSites)
+		info = map(lambda x: self.to_dictionary(x), nearestSites)
 		logging.info(info)
-		#self.response.headers = {'Content-Type': 'application/json; charset=utf-8'}
-		#self.response.out.write(json.dumps(info))
 		self.render_json(info)
 
 class MainPage(BaseHandler):
@@ -59,8 +55,11 @@ class MainPage(BaseHandler):
 		# my_site = Site(csa = my_csa, address = 'Delmer St. & Laguna Ave., Oakland', lat = 0.0, lng = 0.0)
 		#my_site.put()
 		nearestSites = db.GqlQuery("SELECT * FROM Site").fetch(30)
-		site_list = map(lambda x: toDictionary(x), nearestSites)
+		site_list = map(lambda x: self.to_dictionary(x), nearestSites)
 
 		template_values = { 'site_list' : site_list }
-		#path = os.path.join(os.path.dirname(__file__), 'index.html')
 		self.render_template('index.html', template_values)
+
+
+
+

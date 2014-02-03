@@ -21,6 +21,8 @@
 import webapp2
 from webapp2_extras import jinja2
 import json
+import datetime
+from google.appengine.ext import db 
 
 from google.appengine.api import users
 
@@ -55,6 +57,28 @@ class BaseHandler(webapp2.RequestHandler):
     self.response.out.write(json.dumps(response))
     #self.response.write("%s(%s);" % (self.request.GET['callback'],
                                      #json.dumps(response)))
+
+  def to_dictionary(self, model):
+    output = {}
+    SIMPLE_TYPES = (int, long, float, bool, dict, basestring, list)
+
+    for key, prop in model.properties().iteritems():
+      value = getattr(model, key)
+
+      if value is None or isinstance(value, SIMPLE_TYPES):
+        output[key] = value
+      elif isinstance(value, datetime.date):
+        # Convert date/datetime to MILLISECONDS-since-epoch (JS "new Date()").
+        ms = time.mktime(value.utctimetuple()) * 1000
+        ms += getattr(value, 'microseconds', 0) / 1000
+        output[key] = int(ms)
+      elif isinstance(value, db.GeoPt):
+        output[key] = {'lat': value.lat, 'lon': value.lon}
+      elif isinstance(value, db.Model):
+        output[key] = self.to_dictionary(value)
+      else:
+        raise ValueError('cannot encode ' + repr(prop))
+    return output
 
   # def getLoginLink(self):
   #   """Generate login or logout link and text, depending upon the logged-in
