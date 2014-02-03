@@ -3,7 +3,7 @@ import webapp2
 import logging
 
 application = webapp2.WSGIApplication(
-	[('/', MainPage),
+	[('/', IndexHandler),
 	 ('/nearestSites', FindSites)
 	], 
 	debug=True)

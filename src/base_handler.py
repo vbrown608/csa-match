@@ -22,7 +22,6 @@ import webapp2
 from webapp2_extras import jinja2
 import json
 import datetime
-from google.appengine.ext import db 
 
 from google.appengine.api import users
 
