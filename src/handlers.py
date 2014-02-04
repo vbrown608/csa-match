@@ -28,11 +28,11 @@ class IndexHandler(BaseHandler):
 	Render the main landing page where users can view the map and details about CSAs.
 	"""
 	def get(self):
-		# my_csa = CSA(name = 'Phat Beets Produce', desc = 'Phat Beets Produce is a food justice collective.')
-		# my_csa.put()
-		# my_site = Site(csa = my_csa.key, address = 'Delmer St. & Laguna Ave., Oakland', lat = 0.0, lng = 0.0)
-		# my_site.put()
-		
+		my_csa = CSA(name = 'Phat Beets Produce', desc = 'Phat Beets Produce is a food justice collective.')
+		my_csa.put()
+		my_site = Site(csa = my_csa.key, address = 'Delmer St. & Laguna Ave., Oakland', lat = 50.0, lng = 50.0)
+		my_site.put()
+
 		#nearestSites = ndb.GqlQuery("SELECT * FROM Site").fetch(30)
 		#site_list = map(lambda x: self.to_dictionary(x), nearestSites)
 		site_list = {}
