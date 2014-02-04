@@ -12,8 +12,8 @@ $(document).ready(function() {
 		var marker;
 		
 		$.get('/nearestSites', function(result) {
-			alert(result);
 			$.each(result, function(key, data) {
+				console.log(data.lng)
 				var latLng = new google.maps.LatLng(data.lat, data.lng); 
 				
 				// Creating a marker and putting it on the map
