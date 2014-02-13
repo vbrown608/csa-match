@@ -1,2 +1,3 @@
 SITE_INDEX_NAME = 'sitesearch1'
-CSA_INDEX_NAME = 'csasearch1'
+CSA_DATA = 'CSA.csv'
+SITE_DATA = 'Sites.csv'
