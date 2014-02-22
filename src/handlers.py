@@ -46,7 +46,7 @@ class IndexHandler(BaseHandler):
 		#load_data.loadFromCSV()
 
 		index = search.Index(name=config.SITE_INDEX_NAME)
-		query_string = 'distance(location, geopoint(37.85, -122.25)) < 100000'
+		query_string = 'distance(location, geopoint(37.85, -122.25)) < 100000' # distance is in meters, lol
 		nearby_sites = []
 
 		try:
