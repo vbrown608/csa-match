@@ -44,6 +44,7 @@ class IndexHandler(BaseHandler):
 	def get(self):
 		#load_data.clearAllData()
 		#load_data.loadFromCSV()
+		if self.request
 
 		index = search.Index(name=config.SITE_INDEX_NAME)
 		query_string = 'distance(location, geopoint(37.85, -122.25)) < 100000' # distance is in meters, lol
@@ -65,6 +66,7 @@ class IndexHandler(BaseHandler):
 
 		template_values = { 'site_list' : nearby_sites }
 		self.render_template('index.html', template_values)
+
 
 
 
