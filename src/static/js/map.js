@@ -42,15 +42,22 @@ $(document).ready(function() {
 	function searchLocations() {
 		var address = document.getElementById("addressInput").value;
 		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({address: address}, function(results, status) {
+		var geo = geocoder.geocode({address: address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				alert(results[0].geometry.location);
-				//searchLocationsNear(results[0].geometry.location);
+				$.get(
+					'/',
+					{ 
+						lat : results[0].geometry.location.k,
+						lng : results[0].geometry.location.A
+					},
+					function(data) {
+						console.log('Sent get request');
+					});
 			} else {
-				alert(address + ' not found');
+				// Handle failed search here.
+				return false;
 			}
 		});
-		return false;
 	}
 
 	$("form").on('submit', function (e) {
