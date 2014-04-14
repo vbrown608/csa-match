@@ -42,9 +42,7 @@ class IndexHandler(BaseHandler):
 	Render the main landing page where users can view the map and details about CSAs.
 	"""
 	def get(self):
-		#load_data.clearAllData()
-		#load_data.loadFromCSV()
-		if self.request
+		logging.info('Got request data: ' + str(self.request.get('address')))
 
 		index = search.Index(name=config.SITE_INDEX_NAME)
 		query_string = 'distance(location, geopoint(37.85, -122.25)) < 100000' # distance is in meters, lol
@@ -66,8 +64,5 @@ class IndexHandler(BaseHandler):
 
 		template_values = { 'site_list' : nearby_sites }
 		self.render_template('index.html', template_values)
-
-
-
 
 

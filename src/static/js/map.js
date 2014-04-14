@@ -53,10 +53,13 @@ $(document).ready(function() {
 		return false;
 	}
 
-	$('header').click( function() {
-		searchLocations();
-	});
+	$("form").on('submit', function (e) {
+		var address = $('#addressInput').val();
+		searchLocations(address);
 
+   	//stop form submission
+	  e.preventDefault();
+	});
 });
 
 
