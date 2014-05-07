@@ -44,23 +44,12 @@ $(document).ready(function() {
 		var geocoder = new google.maps.Geocoder();
 		var geo = geocoder.geocode({address: address}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
-				var location = { 
-					lat : results[0].geometry.location.k,
-					lng : results[0].geometry.location.A
-				};
-				var uri = '/?lat=' + location.lat + '&lng=' + location.lng;
-				console.log(encodeURI(uri));
-				window.location = encodeURI(uri);
-				// $.get(
-				// 	'/',
-				// 	location,
-				// 	function(data) {
-				// 		console.log('Sent get request');
-				// 		return location;
-				// 	});
+				var lat = results[0].geometry.location.k;
+				var lng = results[0].geometry.location.A;
+				window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
 			} else {
 				// Handle failed search here.
-				return false;
+				alert('Address not found.');
 			}
 		});
 	}
@@ -68,10 +57,6 @@ $(document).ready(function() {
 	$("form").on('submit', function (e) {
 		var address = $('#addressInput').val();
 		var location = searchLocations(address);
-		//console.log(location);
-		//alert(encodeURI(''))
-		//window.location = 
-
 
    	//stop form submission
 	  e.preventDefault();
