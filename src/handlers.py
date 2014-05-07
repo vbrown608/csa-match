@@ -69,6 +69,8 @@ class IndexHandler(BaseHandler):
 		logging.info(nearby_sites)
 
 		template_values = { 'site_list' : nearby_sites,
+												'lat' : lat,
+												'lng' : lng,
 												'address' : address }
 		logging.info(template_values)
 		self.render_template('index.html', template_values)
