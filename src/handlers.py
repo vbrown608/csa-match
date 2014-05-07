@@ -42,10 +42,14 @@ class IndexHandler(BaseHandler):
 	Render the main landing page where users can view the map and details about CSAs.
 	"""
 	def get(self):
-		logging.info('Got request data: ' + str(self.request.get('lat')))
+		lat = self.request.get('lat') or 37.85
+		lng = self.request.get('lng') or -122.25
 
 		index = search.Index(name=config.SITE_INDEX_NAME)
-		query_string = 'distance(location, geopoint(37.85, -122.25)) < 100000' # distance is in meters, lol
+		query_string = ('distance(location, geopoint(' + str(lat) +
+										', ' + str(lng) +
+										')) < 10000') # distance is in meters, lol
+		logging.info(query_string)
 		nearby_sites = []
 
 		try:
@@ -61,6 +65,7 @@ class IndexHandler(BaseHandler):
 					logging.exception('Could not retrieve model')
 		except search.Error:
 		    logging.exception('Search failed')
+		logging.info(nearby_sites)
 
 		template_values = { 'site_list' : nearby_sites }
 		self.render_template('index.html', template_values)
