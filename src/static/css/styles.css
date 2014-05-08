@@ -2,6 +2,10 @@ html { height: 100% }
 
 body { height: 100%; margin: 0; padding: 0 }
 
+header {
+	padding: 10px;
+}
+
 footer {
 	float: left;
 	height: 100px; 
@@ -23,6 +27,21 @@ footer {
 	float: left;
 	height: 300px; 
 	width: 300px;
+}
+
+#right-bar ul, li {
+	list-style-type: none;
+}
+
+#right-bar li {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#right-bar h3 {
+	font-size: 12pt;
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 #details {

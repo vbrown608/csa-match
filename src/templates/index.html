@@ -35,7 +35,10 @@
 <div id='right-bar'>
   <ul id='site-list'>
   {% for site in site_list %}
-    <li><strong> {{ site.csa.name }} </strong> at {{ site.address }}</a></li>
+    <li>
+    	<h3>{{ site.csa.name }} </h3>
+    	<div class='address'>{{ site.address }}</div>
+    </li>
   {% endfor %}
   </ul>
 </div>
