@@ -36,23 +36,25 @@ def clearAllData(sample_data=True):
     logging.exception("Error removing documents:")
 
 def loadFromCSV():
-  logging.info('Loading CSA data')
+  logging.info('Loading CSA data!!!!')
   datafile = os.path.join('data', config.CSA_DATA)
   reader = csv.DictReader(
-      open(datafile, 'r'),
+      open(datafile, 'rU'),
       ['id', 'name', 'desc'])
 
   for row in reader:
+    logging.info(row)
     csa = CSA(id = row['id'], name = row['name'], desc = row['desc'])
     csa.put()
 
   logging.info('Loading Site data')
   datafile = os.path.join('data', config.SITE_DATA)
   reader = csv.DictReader(
-      open(datafile, 'r'),
+      open(datafile, 'rU'),
       ['csa', 'address', 'lat', 'lng'])
 
   for row in reader:
+    logging.info(row)
     csa_key = ndb.Key(CSA, row['csa'])
     site = Site(csa = csa_key, address = row['address'], lat = float(row['lat']), lng = float(row['lng']))
     site.put()

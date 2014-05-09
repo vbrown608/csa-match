@@ -20,6 +20,10 @@
 
   <!-- include spec files here... -->
   <script type="text/javascript" src="spec/MapSpec.js"></script>
+  <style>
+    #wrapper { height : 0;
+              visibility : hidden; }
+  </style>
 
 </head>
 
@@ -30,7 +34,7 @@
 
 <div id='options'>
   <form name='search' action="/" method="get">
-    <input id='addressInput' name='address' type='text' value='{{ address }}'>
+    <input id='addressInput' name='address' type='text' value='1580 Solano Ave., Albany, CA 94707'>
     <input class='button' type='submit' value='Submit'>
   </form>
 </div>
@@ -39,13 +43,52 @@
 
 <div id='right-bar'>
   <ul id='site-list'>
-  {% for site in site_list %}
-    <li><strong>{{ site.csa.name }}</strong> at {{ site.address }}</a></li>
-  {% endfor %}
+  
+    <li>
+      <h3>Frog Hollow Farm </h3>
+      <div class='address'>1580 Solano Ave., Albany, CA 94707</div>
+    </li>
+  
+    <li>
+      <h3>Phat Beets Produce </h3>
+      <div class='address'>59th St. near San Pablo and Stanford Ave.</div>
+    </li>
+  
+    <li>
+      <h3>Frog Hollow Farm </h3>
+      <div class='address'>1111 Franklin St. Oakland, 94607</div>
+    </li>
+  
+    <li>
+      <h3>Phat Beets Produce </h3>
+      <div class='address'>Bonita Ave. and Rose St. between MLK Jr. and Shattuck</div>
+    </li>
+  
+    <li>
+      <h3>Frog Hollow Farm </h3>
+      <div class='address'>College Ave &amp; Broadway, Oakland, CA 94618</div>
+    </li>
+  
+    <li>
+      <h3>Phat Beets Produce </h3>
+      <div class='address'>Near Whole Foods Oakland</div>
+    </li>
+  
+    <li>
+      <h3>Phat Beets Produce </h3>
+      <div class='address'>Lester Ave. off Lakeshore Ave.</div>
+    </li>
+  
+    <li>
+      <h3>Phat Beets Produce </h3>
+      <div class='address'>Near Dover Park and Community Garden, Oakland</div>
+    </li>
+  
   </ul>
 </div>
 
-<div id='details'></div>
+<div id='details'>Description of individual CSAs will go here :)</div>
 
-</body>
+<footer>c. 2014</footer>
+</div>
 </html>

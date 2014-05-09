@@ -12,11 +12,13 @@ window.Map = {
 
 		$("form").on('submit', function(e) {
 			var address = $('#addressInput').val();
-			var location = this.searchLocations(address);
+			var location = this.geocode(address);
 
 			//stop form submission
 			e.preventDefault();
 		}.bind(this));
+
+		return map;
 	},
 
 	dropPins: function(data, map) {
@@ -45,7 +47,7 @@ window.Map = {
 	},
 
 	// Convert address to latitude and longitude using Google Geocoding Service
-	searchLocations: function(address) {
+	geocode: function(address) {
 		var address = document.getElementById("addressInput").value;
 		var geocoder = new google.maps.Geocoder();
 		var geo = geocoder.geocode({
@@ -58,7 +60,9 @@ window.Map = {
 			} else {
 				// Handle failed search here.
 				alert('Address not found.');
+				return false;
 			}
 		});
 	}
+
 }
