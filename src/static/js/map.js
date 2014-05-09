@@ -25,24 +25,24 @@ window.Map = {
 		var infowindow = new google.maps.InfoWindow();
 		var marker;
 
-		for (var i = 0; i < data.length; i++){
+		for (var i = 0; i < data.length; i++) {
 			site = data[i];
 			var latLng = new google.maps.LatLng(site.lat, site.lng);
 
 			// Creating a marker and putting it on the map
-			marker = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: latLng,
 				map: map,
 				title: site.csa.name
 			});
 
 			// Adding infowindows
-			google.maps.event.addListener(marker, 'click', (function(marker) {
-				return function() {
-					infowindow.setContent(site.csa.desc);
-					infowindow.open(map, marker);
-				}
-			})(marker));
+      google.maps.event.addListener(marker, 'click', (function(marker, site) {
+        return function() {
+          infowindow.setContent(site.csa.desc);
+          infowindow.open(map, marker);
+        }
+      })(marker, site));
 		}
 	},
 
@@ -56,13 +56,16 @@ window.Map = {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var lat = results[0].geometry.location.k;
 				var lng = results[0].geometry.location.A;
-				window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
+				this.setWindow(address, lat, lng);
 			} else {
 				// Handle failed search here.
 				alert('Address not found.');
-				return false;
 			}
 		});
+	},
+
+	setWindow: function(address, lat, lng) {
+		window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
 	}
 
 }
