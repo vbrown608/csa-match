@@ -50,14 +50,23 @@ class IndexHandler(BaseHandler):
 		lat = self.request.get('lat') or 37.85
 		lng = self.request.get('lng') or -122.25
 
+		# Build search query
+		# Distance is in meters
 		index = search.Index(name=config.SITE_INDEX_NAME)
-		query_string = ('distance(location, geopoint(' + str(lat) +
-										', ' + str(lng) +
-										')) < 10000') # distance is in meters, lol
-		nearby_sites = []
+		query_string = ('distance(location, geopoint(%.3f, %.3f)) < 10000' % (lat, lng)) 
+		sort1 = search.SortExpression(expression='distance(location, geopoint(%.3f, %.3f))' \
+			% (lat, lng), 
+			direction=search.SortExpression.ASCENDING, default_value=float('inf'))
+		sort_opts = search.SortOptions(expressions=[sort1])
+		query_options = search.QueryOptions(
+			limit = 10,
+			sort_options = sort_opts)
+		query = search.Query(query_string=query_string, options=query_options) 
 
+		# Run search and process results
+		nearby_sites = []
 		try:
-			results = index.search(query_string) 
+			results = index.search(query)
 			# Iterate over the documents in the results
 			for r in results:
 				site_id = int(r['id'][0].value)

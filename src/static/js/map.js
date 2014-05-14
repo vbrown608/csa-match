@@ -1,10 +1,11 @@
 //Multiple markers example: http://stackoverflow.com/questions/3059044/google-maps-js-api-v3-simple-multiple-marker-example/3059129#3059129
 window.Map = {
 
+	// Set up the Google Maps map
 	initialize: function(lat, lng, sites) {
 		var mapOptions = {
 			center: new google.maps.LatLng(lat, lng),
-			zoom: 10
+			zoom: 10,
 		};
 		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 
@@ -21,6 +22,7 @@ window.Map = {
 		return map;
 	},
 
+	// Add pins marking nearby CSAs to the map
 	dropPins: function(data, map) {
 		var infowindow = new google.maps.InfoWindow();
 		var marker;
@@ -40,6 +42,10 @@ window.Map = {
       google.maps.event.addListener(marker, 'click', (function(marker, site) {
         return function() {
           infowindow.setContent(site.csa.desc);
+          infowindow.setOptions({
+          	disableAutoPan : true,
+          	maxWidth : 100
+          })
           infowindow.open(map, marker);
         }
       })(marker, site));
@@ -56,7 +62,7 @@ window.Map = {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var lat = results[0].geometry.location.k;
 				var lng = results[0].geometry.location.A;
-				this.setWindow(address, lat, lng);
+				window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
 			} else {
 				// Handle failed search here.
 				alert('Address not found.');
@@ -65,7 +71,7 @@ window.Map = {
 	},
 
 	setWindow: function(address, lat, lng) {
-		window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
+		//window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
 	}
 
 }
