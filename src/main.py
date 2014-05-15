@@ -4,7 +4,7 @@ import logging
 
 application = webapp2.WSGIApplication(
 	[('/', IndexHandler),
-	 ('/findsites', FindSites)
+		('/getpins', GetPinsHandler)
 	], 
 	debug=True)
 

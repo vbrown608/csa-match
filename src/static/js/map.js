@@ -19,7 +19,20 @@ window.Map = {
 			e.preventDefault();
 		}.bind(this));
 
+		this.getPins(lat, lng, map);
+
 		return map;
+	},
+
+	getPins: function(lat, lng, map) {
+		$.get('/getpins', {
+				lat : lat,
+				lng : lng
+			},
+			function(response) {
+				this.dropPins(response, map)
+			}.bind(this)
+		);
 	},
 
 	// Add pins marking nearby CSAs to the map
@@ -39,16 +52,16 @@ window.Map = {
 			});
 
 			// Adding infowindows
-      google.maps.event.addListener(marker, 'click', (function(marker, site) {
-        return function() {
-          infowindow.setContent(site.csa.desc);
-          infowindow.setOptions({
-          	disableAutoPan : true,
-          	maxWidth : 100
-          })
-          infowindow.open(map, marker);
-        }
-      })(marker, site));
+			google.maps.event.addListener(marker, 'click', (function(marker, site) {
+				return function() {
+					infowindow.setContent(site.csa.desc);
+					infowindow.setOptions({
+						disableAutoPan: true,
+						maxWidth: 100
+					})
+					infowindow.open(map, marker);
+				}
+			})(marker, site));
 		}
 	},
 
@@ -62,16 +75,18 @@ window.Map = {
 			if (status == google.maps.GeocoderStatus.OK) {
 				var lat = results[0].geometry.location.k;
 				var lng = results[0].geometry.location.A;
-				window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
+				//window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
+				this.setWindow(address, lat, lng);
+				return results
 			} else {
-				// Handle failed search here.
 				alert('Address not found.');
 			}
-		});
+		}.bind(this));
 	},
 
+	// Set the window location to center on a new address
 	setWindow: function(address, lat, lng) {
-		//window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
+		window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
 	}
 
 }
