@@ -58,16 +58,27 @@ class Scraper():
 				site.lat, site.lng = locations[site.name]
 
 	def toCSV(self, sites):
-		with open("sites.csv", "wb") as csvfile:
+		with open("sites.csv", "a") as csvfile:
 			siteWriter = csv.writer(csvfile, delimiter=',')
 			for site in sites:
 				siteWriter.writerow([site.csa, site.name, site.address, site.lat, site.lng])
 
 
-#happychild = Scraper('Happy Child CSA')
-#result = happychild.scrape('http://happychildcsa.csaware.com/store/csadetails.jsp')
-#drops = happychild.getLatLng('http://cw.csaware.com/store/dropsmap.jsp?id=3963', result)
-#happychild.toCSV(result)
+#clear CSV
+filename = 'sites.csv'
+f = open(filename, "w+")
+f.close()
+
+
+happychild = Scraper('Happy Child CSA')
+result = happychild.scrape('http://happychildcsa.csaware.com/store/csadetails.jsp')
+happychild.getLatLng('http://cw.csaware.com/store/dropsmap.jsp?id=3963', result)
+happychild.toCSV(result)
+
+shootingstar = Scraper('Shooting Star CSA')
+result = shootingstar.scrape('http://shootingstar.csaware.com/store/csadetails.jsp')
+shootingstar.getLatLng('http://cw.csaware.com/store/dropsmap.jsp?id=15', result)
+shootingstar.toCSV(result)
 
 
 # Classes
