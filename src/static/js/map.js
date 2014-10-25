@@ -73,9 +73,9 @@ window.Map = {
 			address: address
 		}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
+				console.log(results[0].geometry.location);
 				var lat = results[0].geometry.location.k;
-				var lng = results[0].geometry.location.A;
-				//window.location = encodeURI('/?address=' + address + '&lat=' + lat + '&lng=' + lng);
+				var lng = results[0].geometry.location.B;
 				this.setWindow(address, lat, lng);
 				return results
 			} else {
