@@ -18,6 +18,13 @@ from google.appengine.api import users
 from google.appengine.ext.deferred import defer
 from google.appengine.ext import ndb	
 
+class UpdateDataHandler(BaseHandler):
+	"""
+	Update the CSAs in the datastore based on CSV data
+	"""
+	def get(self):
+		load_data.clearAllData()
+		load_data.loadFromCSV()
 
 class GetPinsHandler(BaseHandler):
 	"""
