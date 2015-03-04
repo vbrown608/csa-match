@@ -26,6 +26,7 @@ class Site(ndb.Model):
 	"""
 	#doc_id = ndb.StringProperty()
 	csa = ndb.KeyProperty(kind=CSA)
+	name = ndb.StringProperty()
 	address = ndb.StringProperty()
 	lat = ndb.FloatProperty()
 	lng = ndb.FloatProperty()

@@ -29,10 +29,6 @@ footer {
 	width: 300px;
 }
 
-#right-bar ul, li {
-	list-style-type: none;
-}
-
 #right-bar li {
 	margin-top: 20px;
 	margin-bottom: 20px;

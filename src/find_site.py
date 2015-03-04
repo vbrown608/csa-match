@@ -11,7 +11,6 @@ from models import *
 import config
 
 def buildQuery(lat, lng, limit=10, distance=10000):
-	limit = 1000 if limit > 1000 else limit
 	query_string = ('distance(location, geopoint(%.3f, %.3f)) < %f' % (lat, lng, distance)) 
 	sort1 = search.SortExpression(expression='distance(location, geopoint(%.3f, %.3f))' \
 		% (lat, lng), 

@@ -54,7 +54,7 @@ def to_CSV(sites):
 	with open("sites.csv", "a") as csvfile:
 		siteWriter = csv.writer(csvfile, delimiter=',')
 		for site in sites:
-			siteWriter.writerow([site.csa, site.name, site.lat or 0, site.lng or 0, site.time, site.address])
+			siteWriter.writerow([site.csa, site.name, site.address, site.lat or 0, site.lng or 0, site.time])
 
 
 #clear CSV

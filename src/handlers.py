@@ -30,7 +30,7 @@ class GetPinsHandler(BaseHandler):
 		lng = float(lng)
 
 		# Search for the nearest sites
-		query = find_site.buildQuery(lat, lng, 10000, 1000000)
+		query = find_site.buildQuery(lat, lng, 1000, 1000000)
 		nearby_sites = find_site.runSearch(query)
 
 		logging.info(nearby_sites)

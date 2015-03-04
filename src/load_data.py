@@ -51,12 +51,12 @@ def loadFromCSV():
   datafile = os.path.join('data', config.SITE_DATA)
   reader = csv.DictReader(
       open(datafile, 'rU'),
-      ['csa', 'address', 'lat', 'lng'])
+      ['csa', 'name', 'address', 'lat', 'lng'])
 
   for row in reader:
     logging.info(row)
     csa_key = ndb.Key(CSA, row['csa'])
-    site = Site(csa = csa_key, address = row['address'], lat = float(row['lat']), lng = float(row['lng']))
+    site = Site(csa = csa_key, name=row['name'], address = row['address'], lat = float(row['lat']), lng = float(row['lng']))
     site.put()
 
 
