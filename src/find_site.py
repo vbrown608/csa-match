@@ -11,14 +11,14 @@ from models import *
 import config
 
 def buildQuery(lat, lng, limit=10, distance=10000):
-	logging.info("Updating")
+	limit = 1000 if limit > 1000 else limit
 	query_string = ('distance(location, geopoint(%.3f, %.3f)) < %f' % (lat, lng, distance)) 
 	sort1 = search.SortExpression(expression='distance(location, geopoint(%.3f, %.3f))' \
 		% (lat, lng), 
 		direction=search.SortExpression.ASCENDING, default_value=float('inf'))
 	sort_opts = search.SortOptions(expressions=[sort1])
 	query_options = search.QueryOptions(
-		limit = 10,
+		limit = limit,
 		sort_options = sort_opts)
 	query = search.Query(query_string=query_string, options=query_options) 
 	return query

@@ -36,7 +36,7 @@ def clearAllData(sample_data=True):
     logging.exception("Error removing documents:")
 
 def loadFromCSV():
-  logging.info('Loading CSA data!!!!')
+  logging.info('Loading CSA data')
   datafile = os.path.join('data', config.CSA_DATA)
   reader = csv.DictReader(
       open(datafile, 'rU'),

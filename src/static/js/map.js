@@ -75,7 +75,7 @@ window.Map = {
 			if (status == google.maps.GeocoderStatus.OK) {
 				console.log(results[0].geometry.location);
 				var lat = results[0].geometry.location.k;
-				var lng = results[0].geometry.location.B;
+				var lng = results[0].geometry.location.D;
 				this.setWindow(address, lat, lng);
 				return results
 			} else {
