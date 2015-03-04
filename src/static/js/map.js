@@ -54,7 +54,11 @@ window.Map = {
 			// Adding infowindows
 			google.maps.event.addListener(marker, 'click', (function(marker, site) {
 				return function() {
-					infowindow.setContent(site.csa.desc);
+					var content = '<div class="content">' +
+						'<h4>' + site.csa.name + '</h4>' +
+						'<div class="address">' + site.name + '</div>' +
+						'</div>'
+					infowindow.setContent(content);
 					infowindow.setOptions({
 						disableAutoPan: true,
 						maxWidth: 100
