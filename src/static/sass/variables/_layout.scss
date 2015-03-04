@@ -1,0 +1,54 @@
+$narrow-width: 740px;
+$normal-width: 980px;
+$wide-width: 1220px;
+
+$narrow: 755px, 'no-query' true; // Add 15 to each breakpoint
+$normal: 995px, 'no-query' true;
+$wide: 1235px;
+
+$horz-spacing: 30px;
+$vert-spacing: 20px;
+$outside-gutter-spacing: 15px;
+$narrow-gutter-spacing: 40px;
+$footer-vert-spacing: 30px;
+
+$default-border-radius: 10px;
+
+// Configuring Susy Defaults.
+$susy: (
+  global-box-sizing: border-box, /
+  use-custom: (rem: true), /
+  math: fluid,
+  // debug: (
+  //   image: show-columns,
+  // ),
+);
+
+$narrow-grid: (
+  global-box-sizing: border-box,
+  use-custom: (rem: true),
+  columns: 4,
+  container: $narrow-width,
+  // debug: (
+  //   image: show-columns,
+  // ),
+);
+
+$normal-grid: (
+  global-box-sizing: border-box,
+  use-custom: (rem: true),
+  container: $normal-width,
+  columns: 6,
+  // column-width: 120px,
+  // debug: (
+  //   image: show-columns,
+  // ),
+);
+
+$wide-grid: (
+  global-box-sizing: border-box,
+  use-custom: (rem: true),
+  container: $wide-width,
+  columns: 6,
+  column-width: 150px,
+);

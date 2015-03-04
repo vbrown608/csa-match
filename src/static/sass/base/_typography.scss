@@ -1,0 +1,51 @@
+body {
+}
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+h4 {
+}
+
+h5,
+h6 {}
+
+p {
+}
+
+a {
+  // link-colors($normal, $hover, $active, $visited, $focus)
+  @include hyphenation;
+  // text-decoration: none;
+}
+
+blockquote {
+}
+
+blockquote,
+blockquote p {
+}
+
+em {
+  font-style: italic;
+}
+
+b,
+strong {
+  // color: $black;
+  // font-weight: $regular;
+}
+
+em strong,
+strong em {
+  // font-style: italic;
+  // color: $black;
+  // font-weight: $regular;
+}
+

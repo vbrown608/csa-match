@@ -1,0 +1,13 @@
+# We absolutely don't want to have the .sass-cache in git.
+.sass-cache
+
+# Exclude image sprites
+images/image-replacement-*.png
+
+# Ignore css.
+css
+css/*
+
+# But not library css.
+!libraries/*/css
+!libraries/*/css/*

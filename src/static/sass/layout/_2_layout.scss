@@ -1,0 +1,25 @@
+@include border-box-sizing;
+
+.page, footer {
+  // Define mobile container and grid.
+  @include container($susy);
+
+  // Narrow.
+  @include breakpoint($narrow) {
+    @include container($narrow-grid);
+  }
+
+  // Normal.
+  @include breakpoint($normal) {
+    @include container($normal-grid);
+  }
+}
+
+.page, footer {
+  @include full-column;
+}
+
+article {
+  
+  @include clearfix;
+}

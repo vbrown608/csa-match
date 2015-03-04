@@ -1,0 +1,8 @@
+@function remify($target) {
+  @return $target / $base-font-size + 0rem;
+}
+
+@mixin remify-style($style, $target) {
+  #{ $style }: $target;
+  #{ $style }: remify($target);
+}
