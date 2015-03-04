@@ -48,7 +48,7 @@ class IndexHandler(BaseHandler):
 		lng = float(lng)
 
 		# Search for the nearest sites
-		query = find_site.buildQuery(lat, lng, limit=10)
+		query = find_site.buildQuery(lat, lng, limit=6)
 		nearby_sites = find_site.runSearch(query)
 
 		template_values = { 'site_list' : nearby_sites,

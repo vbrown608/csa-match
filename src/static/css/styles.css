@@ -1,20 +1,22 @@
-html { height: 100% }
+/*html { height: 100% }*/
 
-body { height: 100%; margin: 0; padding: 0 }
+/*body { height: 100%; margin: 0; padding: 0 }*/
 
 header {
 	padding: 10px;
 }
 
 footer {
-	float: left;
-	height: 100px; 
 	width: 100%;
 }
 
 #wrapper {
 	width: 700px;
 	margin: auto;
+}
+
+#options {
+	margin-bottom: 20px;
 }
 
 #map-canvas { 
@@ -25,12 +27,10 @@ footer {
 
 #right-bar {
 	float: left;
-	height: 300px; 
 	width: 300px;
 }
 
 #right-bar li {
-	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
@@ -41,7 +41,6 @@ footer {
 }
 
 #details {
-	float: left;
-	height: 100px; 
 	width: 100%;
+	margin-bottom: 30px;
 }
