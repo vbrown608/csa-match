@@ -2,10 +2,11 @@
 window.Map = {
 
 	// Set up the Google Maps map
-	initialize: function(lat, lng, sites) {
+	initialize: function(lat, lng, zoom, sites) {
+		console.log(zoom);
 		var mapOptions = {
 			center: new google.maps.LatLng(lat, lng),
-			zoom: 10,
+			zoom: zoom,
 		};
 		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 

@@ -40,7 +40,6 @@ class GetPinsHandler(BaseHandler):
 		query = find_site.buildQuery(lat, lng, 1000, 1000000)
 		nearby_sites = find_site.runSearch(query)
 
-		logging.info(nearby_sites)
 		self.render_json(nearby_sites)
 
 class IndexHandler(BaseHandler):
@@ -53,6 +52,7 @@ class IndexHandler(BaseHandler):
 		lat = float(lat)
 		lng = self.request.get('lng') or -122.25
 		lng = float(lng)
+		zoom = 13 if self.request.get('address') else 10
 
 		# Search for the nearest sites
 		query = find_site.buildQuery(lat, lng, limit=6)
@@ -62,7 +62,8 @@ class IndexHandler(BaseHandler):
 												'pins' : json.dumps(nearby_sites),
 												'lat' : lat,
 												'lng' : lng,
-												'address' : address }
+												'address' : address, 
+												'zoom' : zoom}
 		self.render_template('index.html', template_values)
 
 

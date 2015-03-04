@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var pins = {{ pins|safe }};
-		window.Map.initialize({{ lat }}, {{ lng }}, pins);
+		window.Map.initialize({{ lat }}, {{ lng }}, {{ zoom }}, pins);
 	});
 </script>
 </head>
