@@ -4,15 +4,6 @@ header {
   padding: 10px;
 }
 
-footer {
-  width: 100%;
-}
-
-#wrapper {
-  width: 700px;
-  margin: auto;
-}
-
 .page, footer {
   // Define mobile container and grid.
   @include container($susy);
@@ -30,9 +21,4 @@ footer {
 
 .page, footer {
   @include full-column;
-}
-
-article {
-  
-  @include clearfix;
 }

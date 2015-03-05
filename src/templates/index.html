@@ -18,35 +18,36 @@
 </head>
 
 <body>
-<div id="my-data" data-name="{{ site_list }}"></div>
 
-<div id='wrapper'>
-<header>CSA Pickup Finder</header>
+<div class='page'>
+  <header>CSA Pickup Finder</header>
 
-<div id='options'>
-	<form name='search' action="/" method="get">
-		<input id='addressInput' name='address' type='text' value='{{ address }}'>
-		<input class='button' type='submit' value='Submit'>
-	</form>
+  <div class='search'>
+  	<form name='search' action="/" method="get">
+  		<input id='addressInput' name='address' type='text' value='{{ address }}'>
+  		<input class='button' type='submit' value='Submit'>
+  	</form>
+  </div>
+
+  <div id='map-canvas'></div>
+
+  <div id='right-bar'>
+    <ol id='site-list'>
+    {% for site in site_list %}
+      <li>
+      	<h3>{{ site.csa.name }} </h3>
+      	<div class='name'>{{ site.name }}</div>
+      	<div class='address'>{{ site.address }}</div>
+      </li>
+    {% endfor %}
+    </ol>
+  </div>
+
+  <div id='details'>Users click on CSA name to see a more in-depth description here.</div>
+
 </div>
-
-<div id='map-canvas'></div>
-
-<div id='right-bar'>
-  <ol id='site-list'>
-  {% for site in site_list %}
-    <li>
-    	<h3>{{ site.csa.name }} </h3>
-    	<div class='name'>{{ site.name }}</div>
-    	<div class='address'>{{ site.address }}</div>
-    </li>
-  {% endfor %}
-  </ol>
-</div>
-
-<div id='details'>Users click on CSA name to see a more in-depth description here.</div>
-
-<footer>c. 2015</footer>
-</div>
+<footer>
+  c. 2015
+</footer>
 </body>
 </html>
