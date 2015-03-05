@@ -1,7 +1,15 @@
+.map-wrapper {
+	@include breakpoint($narrow) {
+		width: 60%;
+		float: left;
+	}	
+}
+
 #map-canvas { 
 	width: 100%;
 	height: 400px;
-	// float: left;
-	// height: 400px; 
-	// width: 400px;
+
+	@include breakpoint($narrow) {
+		height: 430px;
+	}
 }

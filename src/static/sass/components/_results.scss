@@ -1,6 +1,5 @@
 #right-bar {
-	// float: left;
-	// width: 300px;
+	@include remify-style(margin-top, 30px);
 
 	li {
 		margin-bottom: 20px;
@@ -11,9 +10,17 @@
 		margin-top: 5px;
 		margin-bottom: 5px;
 	}
+
+	@include breakpoint($narrow) {
+		margin-top: 0;
+		width: 40%;
+		float: left;
+	}
 }
 
 #details {
-	// width: 100%;
-	margin-bottom: 30px;
+	width: 100%;
+	float: left;
+	@include remify-style(margin-top, 30px);
+	@include remify-style(margin-bottom, 30px);
 }

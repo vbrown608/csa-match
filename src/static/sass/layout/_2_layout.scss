@@ -1,7 +1,12 @@
 @include border-box-sizing;
 
+body {
+  margin: 0;
+}
+
 header {
-  padding: 10px;
+  @include remify-style(padding-top, 20px);
+  @include remify-style(padding-bottom, 20px);
 }
 
 .page, footer {
@@ -20,5 +25,6 @@ header {
 }
 
 .page, footer {
-  @include full-column;
+  @include remify-style(padding-left, 10px);
+  @include remify-style(padding-right, 10px);
 }

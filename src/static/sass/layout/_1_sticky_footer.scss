@@ -1,16 +1,18 @@
-// * {
-//   margin: 0;
-// }
+* {
+  margin: 0;
+}
 html, body {
   height: 100%;
+  margin: 0;
 }
+
 .page {
   min-height: 100%;
   // height: auto !important; This line and the next line are not necessary unless you need IE6 support
   // height: 100%;
-  margin: 0 auto -16px; /* the bottom margin is the negative value of the footer's height */
+  margin: 0 auto -15.5px; /* the bottom margin is the negative value of the footer's height */
 }
 
 .footer, .push {
-  height: 16px; /* .push must be the same height as .footer */
+  height: 15.5px; /* .push must be the same height as .footer */
 }
