@@ -3,7 +3,6 @@ window.Map = {
 
 	// Set up the Google Maps map
 	initialize: function(lat, lng, zoom, sites) {
-		console.log(zoom);
 		var mapOptions = {
 			center: new google.maps.LatLng(lat, lng),
 			zoom: zoom,
