@@ -1,7 +1,5 @@
 import logging
 
-#import categories
-
 import datetime
 from google.appengine.api import memcache
 from google.appengine.ext import ndb	
@@ -14,7 +12,8 @@ class CSA(ndb.Model):
 	Represent a CSA - will have multiple sites associated to it.
 	"""
 	name = ndb.StringProperty()
-	desc = ndb.StringProperty()
+	description = ndb.StringProperty()
+	url = ndb.StringProperty()
 
 	def sites(self):
 		"""Retrieve all the sites associated with this CSA"""
@@ -24,7 +23,6 @@ class Site(ndb.Model):
 	"""
 	Represent a CSA pick-up location
 	"""
-	#doc_id = ndb.StringProperty()
 	csa = ndb.KeyProperty(kind=CSA)
 	name = ndb.StringProperty()
 	address = ndb.StringProperty()

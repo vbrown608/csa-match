@@ -37,6 +37,7 @@ def runSearch(query):
 			if model != None:
 				site_info = model.to_dict(exclude=['csa']) # CSA property is just a key
 				site_info['csa'] = model.csa.get().to_dict()
+				site_info['csa']['key'] = model.csa.string_id()
 				nearby_sites += [site_info]
 			else:
 				logging.exception('Could not retrieve model')

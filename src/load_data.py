@@ -40,11 +40,10 @@ def loadFromCSV():
   datafile = os.path.join('data', config.CSA_DATA)
   reader = csv.DictReader(
       open(datafile, 'rU'),
-      ['id', 'name', 'desc'])
+      ['id', 'name', 'description'])
 
   for row in reader:
-    logging.info(row)
-    csa = CSA(id = row['id'], name = row['name'], desc = row['desc'])
+    csa = CSA(id = row['id'], name = row['name'], description = row['description'], url = 'foo')
     csa.put()
 
   logging.info('Loading Site data')
@@ -54,7 +53,6 @@ def loadFromCSV():
       ['csa', 'name', 'address', 'lat', 'lng'])
 
   for row in reader:
-    logging.info(row)
     csa_key = ndb.Key(CSA, row['csa'])
     site = Site(csa = csa_key, name=row['name'], address = row['address'], lat = float(row['lat']), lng = float(row['lng']))
     site.put()

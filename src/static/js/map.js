@@ -60,7 +60,7 @@ window.Map = {
 						'</div>'
 					infowindow.setContent(content);
 					infowindow.setOptions({
-						disableAutoPan: true,
+						disableAutoPan: false,
 						maxWidth: 100
 					})
 					infowindow.open(map, marker);

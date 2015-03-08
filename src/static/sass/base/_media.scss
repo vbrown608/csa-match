@@ -1,6 +1,7 @@
-img, media {
-  max-width: 100%;
-}
+// Messes up map scale. If added back in, map sure to override in map.
+// img, media {
+//   max-width: 100%;
+// }
 
 span[data-picture] {
   display: block;

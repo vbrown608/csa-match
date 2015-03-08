@@ -42,6 +42,14 @@ class GetPinsHandler(BaseHandler):
 
 		self.render_json(nearby_sites)
 
+class CSAHandler(BaseHandler):
+	"""
+	Get the description of a CSA
+	"""
+	def get(self, csa_id):
+		csa = CSA.get_by_id(csa_id)
+		self.render_template('_csa.html', csa.to_dict())
+
 class IndexHandler(BaseHandler):
 	"""
 	Render the main landing page where users can view the map and details about CSAs.
@@ -57,6 +65,7 @@ class IndexHandler(BaseHandler):
 		# Search for the nearest sites
 		query = find_site.buildQuery(lat, lng, limit=6)
 		nearby_sites = find_site.runSearch(query)
+		logging.info(nearby_sites[0])
 
 		template_values = { 'site_list' : nearby_sites,
 												'pins' : json.dumps(nearby_sites),

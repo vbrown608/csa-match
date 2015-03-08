@@ -8,11 +8,13 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type='text/javascript' src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBq8IK9i01QUEBblYNr1uNPQdiiUIuzTtk&sensor=false">
 </script>
+<script type='text/javascript' src="js/main.js"></script>
 <script type='text/javascript' src="js/map.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var pins = {{ pins|safe }};
-		window.Map.initialize({{ lat }}, {{ lng }}, {{ zoom }}, pins);
+    window.CSA.initialize();
+    var pins = {{ pins|safe }};
+    window.Map.initialize({{ lat }}, {{ lng }}, {{ zoom }}, pins);
 	});
 </script>
 </head>
@@ -37,7 +39,9 @@
     <ol id='site-list'>
     {% for site in site_list %}
       <li>
-      	<h3>{{ site.csa.name }} </h3>
+        <a href='/csa/{{site.csa.key}}'>
+        	<h3 class='csa'>{{ site.csa.name }} </h3>
+        </a>
       	<div class='name'>{{ site.name }}</div>
       	<div class='address'>{{ site.address }}</div>
       </li>
@@ -49,7 +53,7 @@
   <div class='push'></div>
 </div>
 <footer>
-  c. 2015
+  c. Vivian Brown 2015
 </footer>
 </body>
 </html>
